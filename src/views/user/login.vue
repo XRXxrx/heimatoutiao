@@ -62,6 +62,7 @@ export default {
                 position: "bottom",
               });
               localStorage.setItem("heima_token2", res.data.data.token);
+              localStorage.setItem("user_id", res.data.data.user.id);
               this.$router.push({
                 path: `/personal/${res.data.data.user.id}`,
               });

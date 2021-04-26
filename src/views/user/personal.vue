@@ -23,7 +23,12 @@
     <mycell title="我的跟帖" desc="跟帖/回复"></mycell>
     <mycell title="我的收藏" desc="文章/视频"></mycell>
     <mycell title="设置"></mycell>
-    <mybutton type="danger" style="margin-top: 20px">退出</mybutton>
+    <mybutton
+      type="danger"
+      style="margin-top: 20px"
+      @click="$router.push({ name: 'login' })"
+      >退出</mybutton
+    >
   </div>
 </template>
 

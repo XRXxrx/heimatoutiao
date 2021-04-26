@@ -38,6 +38,7 @@ export default {
   color: #000;
   font-weight: bold;
   font-size: 20px;
+  margin: 0 auto;
 }
 .success {
   border-color: green;

@@ -10,7 +10,7 @@
         <span>搜索商品</span>
       </div>
       <div class="user">
-        <van-icon name="manager-o" />
+        <van-icon name="manager-o" @click="editperson" />
       </div>
     </div>
     <!-- 导航栏 -->
@@ -74,6 +74,16 @@ export default {
       //   this.postlist = (await postList(id)).data.data;
       //将导航栏对应的内容数据存进对应的栏目数组对象中
       this.catelist[this.active].postlist = (await postList(id)).data.data;
+    },
+    //返回个人中心页
+    editperson() {
+      let user_id = localStorage.getItem("user_id");
+      if (user_id) {
+        this.$router.push({ path: `/personal/${user_id}` });
+      } else {
+        this.$router.push({ name: "login" });
+        this.$toast.fail("你还未登录");
+      }
     },
   },
 };
