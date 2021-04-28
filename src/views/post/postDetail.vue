@@ -11,12 +11,12 @@
       <span>关注</span>
     </div>
     <div class="detail">
-      <div class="title">标题</div>
+      <div class="title">{{ post.title }}</div>
       <div class="desc">
-        <span>火星人</span> &nbsp;&nbsp;
+        <span>{{ post.user.nickname }}</span> &nbsp;&nbsp;
         <span>2019-9-9</span>
       </div>
-      <div class="content">文章的内容：</div>
+      <div class="content" v-html="post.content"></div>
       <div class="opt">
         <span class="like"> <van-icon name="good-job-o" />点赞 </span>
         <span class="chat"> <van-icon name="chat" class="w" />微信 </span>
@@ -44,9 +44,16 @@
 <script>
 import { postDetail } from "@/apis/post";
 export default {
+  data() {
+    return {
+      post: {},
+    };
+  },
   async mounted() {
     let res = await postDetail(this.$route.params.id);
-    console.log(res);
+    // console.log(res);
+    this.post = res.data.data;
+    // console.log(this.post);
   },
 };
 </script>
@@ -95,11 +102,17 @@ export default {
     font-size: 13px;
   }
   .content {
-    text-indent: 2em;
+    // text-indent: 2em;
     line-height: 24px;
     font-size: 15px;
     padding-bottom: 30px;
     width: 100%;
+    /deep/ img {
+      width: 100%;
+    }
+    /deep/ p {
+      text-indent: 2em;
+    }
   }
 }
 .opt {

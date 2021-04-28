@@ -23,10 +23,7 @@
     <mycell title="我的跟帖" desc="跟帖/回复"></mycell>
     <mycell title="我的收藏" desc="文章/视频"></mycell>
     <mycell title="设置"></mycell>
-    <mybutton
-      type="danger"
-      style="margin-top: 20px"
-      @click="$router.push({ name: 'login' })"
+    <mybutton type="danger" style="margin-top: 20px" @click="tuback"
       >退出</mybutton
     >
   </div>
@@ -60,6 +57,14 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+  },
+  methods: {
+    //退出功能
+    tuback() {
+      localStorage.removeItem("heima_token2");
+      localStorage.removeItem("user_id");
+      this.$router.push({ name: "index" });
+    },
   },
 };
 </script>
